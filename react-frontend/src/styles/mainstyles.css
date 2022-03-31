@@ -5,7 +5,7 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     border: 1px solid;
-    height: 80vh;
+    min-height: 90vh;
 }
 
 .Login {
@@ -93,4 +93,51 @@ body{
 
 .noticall{
     background-image: url("https://media0.giphy.com/media/mbW2nvTE0TUc5IgRMm/giphy.gif");
+}
+
+
+/* admin stuff below*/
+.Admin{
+    display:flex;
+    flex-direction: row;
+    padding-top: 2%;
+    grid-gap: 5%;
+    justify-content: center;
+
+}
+ 
+.Admin .patients{ 
+    min-width: 45%;
+    border: 1px solid black;
+    max-height: 60vh;
+   
+}
+
+.Admin  h3{
+    border-bottom: 5px solid black;
+}
+.Admin .logopedies{ 
+    min-width: 45%;
+    border: 1px solid black;
+
+}
+.Admin *{
+    text-align: center;
+    
+}
+.Admin Button{
+    margin: 10px;
+}
+
+.Admin  .card{
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 90%;
+}
+.Admin  .card h5{
+    font-weight: bold;
+    font-size: 20px;
+    float: left;
+    width:75%;
+    
 }

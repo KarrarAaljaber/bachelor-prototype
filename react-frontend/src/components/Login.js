@@ -6,6 +6,7 @@ import { signInWithPhoneNumber,RecaptchaVerifier  } from "firebase/auth";
 import {authorize,db} from "../utils/firebaseClient";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { patientContverter } from '../utils/firebaseClasses/Patient';
+import { NavLink } from 'react-router-dom';
 
 const Login = ({setLoggedOn, setUsername}) =>{
 
@@ -128,16 +129,19 @@ const Login = ({setLoggedOn, setUsername}) =>{
                         
 
                     }} />  
-                        <FormControlLabel
-                          value="logoped"
-                          control={<Checkbox />}
-                          label="Logoped?"
-                          labelPlacement="bottom"
-                        />
+                    <FormControlLabel
+                      value="logoped"
+                      control={<Checkbox />}
+                      label="Logoped?"
+                      labelPlacement="bottom"
+                    />
 
                      <Button variant="contained" size="large" color="primary" type="submit"> Få en gangs kode </Button>
+                     <NavLink to="/Admin" > Er du admin? Klikk her!</NavLink>
+
                 </div>
-                    }
+                
+                }
                   
 
             </form>
