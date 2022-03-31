@@ -11,7 +11,7 @@ export default function AdminHome() {
 
     const[patients,setPatients] = useState([]);
     const[logopedies,setLogopedies] = useState([]);
-
+    
     useEffect( async() => {
         const patients = await getDocs(collection(db, "patients"))
         let p = []

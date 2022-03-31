@@ -10,13 +10,15 @@ export default function WelcomePage() {
     let history = useNavigate();
 
     const[loggedOn, setLoggedOn] = useState(false);
+    const [isLogoped, setIsLogoped] = useState(false)
+
     const[username, setUsername] = useState('');
 
     useEffect(() =>{
 
         console.log(loggedOn);
         if(loggedOn){
-            history('/home', {state: username });
+            history('/home', {username: username, isLogoped: isLogoped });
 
         }
     }, [loggedOn])
@@ -24,7 +26,7 @@ export default function WelcomePage() {
     return (
       
     <>
-        <Login setLoggedOn={setLoggedOn} setUsername={setUsername} />
+        <Login setIsLogoped={setIsLogoped} isLogoped={isLogoped} setLoggedOn={setLoggedOn} setUsername={setUsername} />
     
     </>
   );

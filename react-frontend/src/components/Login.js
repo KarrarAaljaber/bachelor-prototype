@@ -7,8 +7,9 @@ import {authorize,db} from "../utils/firebaseClient";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { patientContverter } from '../utils/firebaseClasses/Patient';
 import { NavLink } from 'react-router-dom';
+import { logopedContverter } from '../utils/firebaseClasses/Logoped';
 
-const Login = ({setLoggedOn, setUsername}) =>{
+const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
 
     const[phoneNumber, setPhoneNumber] =useState('');
     const[gotCode, setGotCode] =useState(false)
@@ -29,34 +30,65 @@ const Login = ({setLoggedOn, setUsername}) =>{
     const handleSubmit =  async (event) =>{
         event.preventDefault();
         if(phoneNumber.length >=8){
+            if(!isLogoped){
+              const ref = doc(db, "patients", phoneNumber).withConverter(patientContverter);
+              const docSnap = await getDoc(ref);
+              if (docSnap.exists()) {
+                  const patient = docSnap.data();
+                  console.log(patient.toString());
+                  captcha()
+                  const captchaVer = window.recaptchaVerifier;
+  
+                  signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
+                  .then((confirmationResult) => {
+                  // SMS sent. Prompt user to type the code from the message, then sign the
+                  // user in with confirmationResult.confirm(code).
+                      setUsername(patient.fullname)
+  
+                      window.confirmationResult = confirmationResult;
+                      setGotCode(true)
+  
+                  }).catch((error) => {
+                  // Error; SMS not sent
+                  // ...
+                  console.log(error)
+                  });
+  
+  
+                } else {
+                  alert("Det finnes ikke en pasient med dette nummert!")
+                }
+            }else{
+              const ref = doc(db, "logopeds", phoneNumber).withConverter(logopedContverter);
+              const docSnap = await getDoc(ref);
+              if (docSnap.exists()) {
+                  const logoped = docSnap.data();
+                  console.log(logoped.toString());
+                  captcha()
+                  const captchaVer = window.recaptchaVerifier;
+  
+                  signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
+                  .then((confirmationResult) => {
+                  // SMS sent. Prompt user to type the code from the message, then sign the
+                  // user in with confirmationResult.confirm(code).
+                      setUsername(logoped.fullname)
+                      
+                      window.confirmationResult = confirmationResult;
+                      setGotCode(true)
+  
+                  }).catch((error) => {
+                  // Error; SMS not sent
+                  // ...
+                  console.log(error)
+                  });
+  
+  
+                } else {
+                  alert("Det finnes ikke en logoped med dette nummert!")
+                }
 
-            const ref = doc(db, "patients", phoneNumber).withConverter(patientContverter);
-            const docSnap = await getDoc(ref);
-            if (docSnap.exists()) {
-                const patient = docSnap.data();
-                console.log(patient.toString());
-                captcha()
-                const captchaVer = window.recaptchaVerifier;
-
-                signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
-                .then((confirmationResult) => {
-                // SMS sent. Prompt user to type the code from the message, then sign the
-                // user in with confirmationResult.confirm(code).
-                    setUsername(patient.fullname)
-
-                    window.confirmationResult = confirmationResult;
-                    setGotCode(true)
-
-                }).catch((error) => {
-                // Error; SMS not sent
-                // ...
-                console.log(error)
-                });
-
-
-              } else {
-                alert("Det finnes ikke en bruker med dette nummert!")
-              }
+            }
+           
 
           
 
@@ -131,7 +163,7 @@ const Login = ({setLoggedOn, setUsername}) =>{
                     }} />  
                     <FormControlLabel
                       value="logoped"
-                      control={<Checkbox />}
+                      control={<Checkbox onChange={(event)=>{setIsLogoped(event.target.value)}} />}
                       label="Logoped?"
                       labelPlacement="bottom"
                     />
