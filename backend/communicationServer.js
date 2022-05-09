@@ -1,4 +1,3 @@
-
 const app = require("express")();
 const server = require("http").createServer(app);
 const cors = require("cors");
@@ -20,6 +19,24 @@ app.get('/', (req, res) => {
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
+	console.log(socket.id)
+	socket.on('newuser', function(username) {
+		socket.username = username;
+		console.log( socket.username + ' has connected');
+	  });
+		
+	  
+	var list = io.sockets.sockets;
+	var l = []
+    console.log("Connected sockets:");
+    list.forEach(function(s) {
+        console.log("    socket.id = ", s.id);
+		l.push({id: s.id, name: s.username})
+    });
+	socket.emit("connectedUsers", l);
+
+
+  
 
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")

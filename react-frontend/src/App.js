@@ -8,7 +8,7 @@ const App = () => {
     
     return(
         <BrowserRouter>
-
+          
           <PageRoutes />
 
         </BrowserRouter>

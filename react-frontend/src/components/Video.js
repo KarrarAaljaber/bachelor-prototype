@@ -1,7 +1,7 @@
 
 
 import {React, useRef, useEffect,useState, useContext} from 'react';
-import { SocketContext } from '../utils/SocketContext';
+import { SocketContext } from '../utils/SocketContext'
 
 export default function Video() {
       const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);

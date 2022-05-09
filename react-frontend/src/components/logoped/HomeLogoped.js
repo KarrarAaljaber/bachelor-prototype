@@ -1,18 +1,19 @@
 import React from 'react';
 import Toolbar from './Toolbar';
-import Video from './Video';
+import Video from '../Video';
 
 import {useState, useEffect} from 'react'
 import SideBar from './SideBar';
-import Notifications from './Notifications';
+import {useLocation} from 'react-router-dom'
 
 
-export default function Home() {
+export default function HomeLogoped() {
 
 
   const [onSideBar, setonSideBar] = useState(false)
   const [currentStyle, setCurrentStyle] = useState('container')
   
+
 
   useEffect(() => {
     if(!onSideBar){
@@ -29,7 +30,6 @@ export default function Home() {
             {onSideBar && (<SideBar />)}
             <Video></Video>
             <Toolbar setonSideBar={setonSideBar}>
-              <Notifications />
             </Toolbar>
         </div>
     </>

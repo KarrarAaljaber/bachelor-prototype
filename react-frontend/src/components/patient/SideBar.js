@@ -3,7 +3,7 @@
 import { Button, TextField } from '@material-ui/core';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import React, {useContext, useState} from 'react';
-import { SocketContext } from '../utils/SocketContext';
+import { SocketContext } from '../../utils/SocketContext'
 import {  Call, FileCopy } from '@material-ui/icons';
 
 

@@ -18,7 +18,7 @@ export default function WelcomePage() {
 
         console.log(loggedOn);
         if(loggedOn){
-            history('/home', {username: username, isLogoped: isLogoped });
+            history('/home', { state:{ username, isLogoped}});
 
         }
     }, [loggedOn])
