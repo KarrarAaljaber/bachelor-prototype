@@ -115,15 +115,17 @@ export default function SideBar() {
                     :
                     (
                         <div> 
-                            <Typography variant="h6" align="center"  > Dine pasienter(pålogget) </Typography>
 
-                                <List  className="pasientList">
+                                <List  className="pasientList" style={{border:'2px solid black'}}>
+                                    <Typography variant="h6" align="center"  > Dine pasienter(pålogget) </Typography>
+
                                     {listOnlinePatients}
 
                                     </List>
-                                    <Typography variant="h6" align="center"  > Dine pasienter(Alle) </Typography>
 
-                                    <List  className="pasientList">
+                                    <List  className="pasientList" style={{border:'2px solid black', marginTop: 80}}>
+                                        <Typography variant="h6" align="center"   > Dine pasienter(Alle) </Typography>
+
                                         {listAllPatients}
 
                                     </List>

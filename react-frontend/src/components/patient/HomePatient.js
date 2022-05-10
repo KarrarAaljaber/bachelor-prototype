@@ -30,8 +30,7 @@ export default function HomePatient() {
         <div className={currentStyle}>
             {onSideBar && (<SideBar />)}
             <Video></Video>
-            <Toolbar setonSideBar={setonSideBar}>
-            </Toolbar>
+            {<Toolbar setonSideBar={setonSideBar} />} 
             <Notifications />
 
         </div>

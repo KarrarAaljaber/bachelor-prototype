@@ -19,7 +19,6 @@ export default function Toolbar({children, setonSideBar}) {
  
     <div className="toolbar">
 
-        <Typography variant="h4" align="left"> {state.username}</Typography>
         <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" /> } > Kontrollpanel </Button>
         <Button variant="contained" size="large" color="primary" startIcon={<Call fontSize="large" /> }   onClick={() => { setonSideBar( v => !v) }} > Video </Button>
         <Button variant="contained" size="large" color="primary" startIcon={<Chat fontSize="large" /> } > chat </Button>

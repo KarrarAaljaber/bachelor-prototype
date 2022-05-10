@@ -27,59 +27,77 @@ body{
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-areas: "video  "
-                         "toolbar   "    
+    grid-template-columns: 80% 20%;
+
+    grid-template-areas: "video video video  "
+                         "toolbar toolbar toolbar   " ;
 }
 
 .container-sidebar{
    display: grid;
    grid-template-columns: 70% 30%;
-   grid-template-rows: 70% 30%;
+   grid-template-rows: 80% 20%;
    justify-content: center;
    align-items: center;
-   grid-template-areas: "video sidebar "
-                        "toolbar toolbar  "
+   
+   grid-template-areas: "video sidebar"
+                        "toolbar toolbar";
                         
-                    
+   margin-top:20px;                 
 
 }
 
 .video{
     grid-area: video;
+    margin: 0 auto;
+    padding-top: 10px;
 
-    max-width: 75%;
-    padding: 10%;
 
 
     
 }
 .video-accepted{
     grid-area: video;
-
+    padding-top: 10px;
     display:flex;
+    justify-content: center;
     flex-direction: row;
+    border: 2px solid black;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color:#e2e2d5;    
 
 }
 .video-accepted * {
-    max-width: 40%;
+    max-width: 90%;
+    padding-top: 5%;
+
+}
+.video-accepted div{
     margin: 0 auto;
-    padding-top: 25%;
+    align-items: center;
+    
 }
 
+
 .sidebar{
-    margin-top: 5%;
     margin-bottom: 5%;
+    color: white;
     grid-area: sidebar;
     min-height: 100%;
-    border: 5px solid rgb(63, 81, 181) ;
+    background-color:  rgb(63, 81, 181) ;
+    border: 3px solid black;
 
 }
 .sidebar Button{
     margin: 10px;
     
 }
+
 .toolbar{
     grid-area: toolbar;
+    margin: 0 auto;
     display: flex;
     margin-top: 20px;
     flex-direction: row;
@@ -143,6 +161,9 @@ body{
 }
 
 .notification{
+    margin: 0 auto;
+    margin-left: 45%;
+
     display:flex;
     flex-direction: column;
     animation: .8s shake infinite alternate;
@@ -160,6 +181,7 @@ body{
 .notification Button{
     background-color: #90ee90;
     color: black;
+    
 }
 
 
