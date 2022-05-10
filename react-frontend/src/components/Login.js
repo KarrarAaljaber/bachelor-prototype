@@ -39,7 +39,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   captcha()
                   const captchaVer = window.recaptchaVerifier;
   
-                  /*
+                  
                   signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
                   .then((confirmationResult) => {
                   // SMS sent. Prompt user to type the code from the message, then sign the
@@ -54,10 +54,9 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   // ...
                   console.log(error)
                   });
-                  */
+                  
 
-                  setUsername(patient.fullname)
-                  setLoggedOn(true)
+              
   
   
                 } else {
@@ -72,7 +71,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   captcha()
                   const captchaVer = window.recaptchaVerifier;
   
-                  /*
+                  
                   signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
                   .then((confirmationResult) => {
                   // SMS sent. Prompt user to type the code from the message, then sign the
@@ -87,9 +86,8 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   // ...
                   console.log(error)
                   });
-                  */
-                  setUsername(logoped.fullname)
-                  setLoggedOn(true)
+                  
+         
   
   
                 } else {
