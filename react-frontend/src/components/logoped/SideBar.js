@@ -108,7 +108,7 @@ export default function SideBar() {
     <>
             <div className="sidebar">
                 {callAccepted && !callEnded  ?(      
-                        <Button variant="contained" size="large" color="primary"  onClick={() => {
+                        <Button variant="contained" size="large" color="primary" style={{backgroundColor:'red'}}  onClick={() => {
                             leaveCall()
                          } }> Avslutt samtalen </Button>
                     )
@@ -146,12 +146,14 @@ export default function SideBar() {
 
                     )
                     }
-                       
-            
+
+                        {
+                            /*
                         <CopyToClipboard text={me} >
                             <Button variant="contained"  size="large" color="secondary" onClick={ () => {console.log(me)}} startIcon={<FileCopy fontSize="large" /> } > Kopier din kode</Button>
 
                         </CopyToClipboard>
+                        */}
                 </div>
 
     

@@ -54,9 +54,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   // ...
                   console.log(error)
                   });
-                  
-
-              
+             
   
   
                 } else {
@@ -128,8 +126,8 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
 
                     {gotCode ?
                       <div className="Login"> 
-                      <Typography variant="h4" align="center"  >
-                      Velkommen tilbake  </Typography>
+                      <Typography variant="h4" align="center" color="primary"  >
+                      Velkommen tilbake,  </Typography>
                       {/* 
                       <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                       }} />
@@ -156,28 +154,32 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                    
                     :
                     <div className="Login"> 
-                    <Typography variant="h4" align="center"  >
-                    Velkommen tilbake  </Typography>
+                    <Typography variant="h4" align="center" color="primary"  >
+                    Velkommen tilbake,  </Typography>
                     {/* 
                     <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                     }} />
                     */}
-                    <TextField id="standard-basic"  label="mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
+                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20}}} InputLabelProps={{style: {fontSize: 30}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                         setPhoneNumber(event.target.value)
 
                         
 
                     }} />  
-                    <FormControlLabel
-                      value="logoped"
-                      control={<Checkbox onChange={(event)=>{setIsLogoped(event.target.value)}} />}
-                      label="Logoped?"
-                      labelPlacement="bottom"
-                    />
+               
 
-                     <Button variant="contained" size="large" color="primary" type="submit"> Få en gangs kode </Button>
-                     <NavLink to="/Admin" > Er du admin? Klikk her!</NavLink>
+                     <Button variant="contained" size="large" color="primary" type="submit"> Få engangskode </Button>
 
+                    <div className="adminLogo">
+                      <FormControlLabel
+                        value="logoped"
+                        control={<Checkbox onChange={(event)=>{setIsLogoped(event.target.value)}} />}
+                        label="Logg in som logoped"
+                        labelPlacement="left"
+                      />
+                      <NavLink to="/Admin" > Er du admin? Klikk her!</NavLink>
+
+                    </div>
                 </div>
                 
                 }

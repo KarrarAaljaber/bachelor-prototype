@@ -9,9 +9,7 @@ import { ContextProvider } from './utils/SocketContext';
 
 ReactDOM.render(
        
-        <ContextProvider>
 
         <App />
-        </ContextProvider>
         , document.getElementById('root'));
 

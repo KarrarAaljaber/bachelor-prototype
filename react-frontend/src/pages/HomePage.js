@@ -26,8 +26,11 @@ export default function HomePage() {
 
   return (
     <>
+      <ContextProvider>
+
          {loading  && <LoadingScreen />}
          {loading === false && ( state.isLogoped ? (<HomeLogoped/>) : (<HomePatient/>) )}
+         </ContextProvider>
     
     </>
   );

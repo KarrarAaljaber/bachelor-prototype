@@ -4,7 +4,7 @@ import { ContextProvider } from "./utils/SocketContext";
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 
-/*
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -12,12 +12,12 @@ const theme = createTheme({
     }
   }
 });
-*/
+
 const App = () => {
 
     
     return(
-      <MuiThemeProvider >
+      <MuiThemeProvider theme={theme} >
 
         <BrowserRouter>
           

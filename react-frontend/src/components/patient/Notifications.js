@@ -13,7 +13,7 @@ const Notifications = () => {
     <>
       {call.isReceivingCall && !callAccepted && (
         <div className="notification" >
-          <h3>logopeden {call.name} ringer deg:</h3>
+          <h3>logopeden {call.name} ringer deg</h3>
           <Button variant="contained" color="primary"  onClick={answerCall}  startIcon={<Call fontSize="large" /> }>
             Svar
           </Button>
