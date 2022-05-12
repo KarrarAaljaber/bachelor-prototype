@@ -1,1 +1,1 @@
-web: node backend\communicationServer.js
+web: node communicationServer.js
