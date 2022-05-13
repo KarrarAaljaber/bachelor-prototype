@@ -1,1 +1,1 @@
-web: node communicationServer.js
+worker: node communicationServer.js
