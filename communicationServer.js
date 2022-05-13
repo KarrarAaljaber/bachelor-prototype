@@ -5,14 +5,19 @@ const cors = require("cors");
 
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "*",
+		origin: "https://nettportal.netlify.app/",
 		methods: [ "GET", "POST" ]
 	}
 });
 
 
 
-app.use(cors());
+app.use(cors(
+	{
+	  credentials: true,
+	  origin: 'https://nettportal.netlify.app/'
+	})
+  );
 
 
 const corsMiddleware = (req, res, next) => {
