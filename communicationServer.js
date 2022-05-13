@@ -5,17 +5,14 @@ const cors = require("cors");
 
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "https://nettportal.netlify.app/",
+		origin: "https://nettportal.netlify.app/home",
 		methods: [ "GET", "POST" ]
 	}
 });
 
-var corsOptions = {
-	origin: "https://nettportal.netlify.app/",
-	credentials: true,
-  };
 
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 
 const PORT = process.env.PORT || 5000;
