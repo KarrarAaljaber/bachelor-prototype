@@ -36,7 +36,7 @@ export default function Video() {
                 <div>
                   <video playsInline  ref={userVideo} autoPlay />
                   <div className="callAccepted-menu"> 
-                        <Button  startIcon={<Call fontSize="small" /> } style={{ width: 150, marginBottom:5,  backgroundColor: 'red'}} variant="contained" size="small" color="primary"  onClick={() => {
+                        <Button  startIcon={<Call fontSize="small" style={{color: 'red'}} /> } style={{ width: 150, marginBottom:5,  backgroundColor: 'red'}} variant="contained" size="small" color="primary"  onClick={() => {
                               leaveCall()
                               } }>  
                               Avslutt 

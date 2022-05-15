@@ -5,7 +5,7 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     border: 1px solid black;
-    min-height: 90vh;
+    min-height: 100vh;
 }
 *{
     color:white;
@@ -212,9 +212,9 @@ body{
   .adminLogo{
       display: flex;
       flex-direction: column;
-      bottom: 15%;
+      bottom: 2%;
       position: absolute;
-      left: 70%;
+      left: 75%;
     }
     .adminLogo *{
         color: #8BBD24;
