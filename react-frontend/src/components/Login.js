@@ -9,7 +9,7 @@ import { patientContverter } from '../utils/firebaseClasses/Patient';
 import { NavLink } from 'react-router-dom';
 import { logopedContverter } from '../utils/firebaseClasses/Logoped';
 
-const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
+const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
 
     const[phoneNumber, setPhoneNumber] =useState('');
     const[gotCode, setGotCode] =useState(false)
@@ -57,7 +57,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   */
                   
 
-              
+                  setPN(phoneNumber);
                   setUsername(patient.fullname)
                   setLoggedOn(true)
   
@@ -90,6 +90,8 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                   console.log(error)
                   });
                   */
+                  setPN(phoneNumber);
+
                   setUsername(logoped.fullname)
                   setLoggedOn(true)
          
@@ -133,13 +135,13 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
 
                     {gotCode ?
                       <div className="Login"> 
-                      <Typography variant="h4" align="center" color="primary"  >
+                      <Typography variant="h4" align="center" color="secondary"  >
                       Velkommen tilbake,  </Typography>
                       {/* 
                       <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                       }} />
                       */}
-                        <TextField id="mobil"  label="mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
+                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'white'}}} InputLabelProps={{style: {fontSize: 30, color:'white'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                         setPhoneNumber(event.target.value)
 
 
@@ -161,13 +163,13 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                    
                     :
                     <div className="Login"> 
-                    <Typography variant="h4" align="center" color="primary"  >
+                    <Typography variant="h4" align="center" color="secondary"  >
                     Velkommen tilbake,  </Typography>
                     {/* 
                     <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                     }} />
                     */}
-                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20}}} InputLabelProps={{style: {fontSize: 30}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
+                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'white'}}} InputLabelProps={{style: {fontSize: 30, color:'white'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                         setPhoneNumber(event.target.value)
 
                         
@@ -180,6 +182,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped}) =>{
                     <div className="adminLogo">
                       <FormControlLabel
                         value="logoped"
+                        
                         control={<Checkbox onChange={(event)=>{setIsLogoped(event.target.value)}} />}
                         label="Logg in som logoped"
                         labelPlacement="left"

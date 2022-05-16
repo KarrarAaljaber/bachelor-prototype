@@ -21,9 +21,11 @@ export default function Toolbar({children, setonSideBar}) {
     <div className="toolbar">
 
         <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" /> } > Kontrollpanel </Button>
-        <Button variant="contained" size="large" color="primary" startIcon={<Chat fontSize="large" /> } > Meldinger </Button>
+        { /*
+          <Button variant="contained" size="large" color="primary" startIcon={<Chat fontSize="large" /> } > Meldinger </Button>
+          */
+        }
 
-        <Button variant="contained" size="large" color="primary" startIcon={<VideoCall fontSize="large" /> }   onClick={() => { /*setonSideBar( v => !v) */}} > Videosamtale </Button>
         {children}
     </div>   
     </>

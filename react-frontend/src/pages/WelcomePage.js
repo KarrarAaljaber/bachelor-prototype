@@ -13,12 +13,13 @@ export default function WelcomePage() {
     const [isLogoped, setIsLogoped] = useState(false)
 
     const[username, setUsername] = useState('');
+    const[phoneNumber, setPhoneNumber] = useState('');
 
     useEffect(() =>{
 
         console.log(loggedOn);
         if(loggedOn){
-            history('/home', { state:{ username, isLogoped}});
+            history('/home', { state:{ username, isLogoped, phoneNumber}});
 
         }
     }, [loggedOn])
@@ -26,7 +27,7 @@ export default function WelcomePage() {
     return (
       
     <>
-        <Login setIsLogoped={setIsLogoped} isLogoped={isLogoped} setLoggedOn={setLoggedOn} setUsername={setUsername} />
+        <Login setIsLogoped={setIsLogoped} setPN={setPhoneNumber} isLogoped={isLogoped} setLoggedOn={setLoggedOn} setUsername={setUsername} />
     
     </>
   );

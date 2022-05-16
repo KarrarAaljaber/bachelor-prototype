@@ -3,33 +3,47 @@ import Toolbar from './Toolbar';
 import Video from '../Video';
 
 import {useState, useEffect} from 'react'
-import SideBar from './SideBar';
+import SideBarCall from './SideBarCall';
 import {useLocation} from 'react-router-dom'
+import SideBarControl from './SideBarControl';
 
 
 export default function HomeLogoped() {
 
 
-  const [onSideBar, setonSideBar] = useState(false)
+  const [onSideBarCall, setonSideBarCall] = useState(false)
+  const[onSideBarControl, setOnSideBarControl] = useState(false)
   const [currentStyle, setCurrentStyle] = useState('container')
   
+  const {state} = useLocation();
 
 
   useEffect(() => {
-    if(!onSideBar){
+
+    if(!onSideBarControl && !onSideBarCall){
       setCurrentStyle("container")
+
+    }else if(onSideBarControl && !onSideBarCall){
+      setCurrentStyle("container-sidebarLeft")
+
+    }else if(!onSideBarControl && onSideBarCall){
+        setCurrentStyle("container-sidebarRight")
+
     }else{
-      setCurrentStyle("container-sidebar")
+      setCurrentStyle("container-sidebarBoth")
     }
-  }, [onSideBar])
+
+  }, [onSideBarControl, onSideBarCall])
 
   return (
     <>
         
         <div className={currentStyle}>
-            {onSideBar && (<SideBar />)}
+            {onSideBarCall && (<SideBarCall logopedPN={state?.phoneNumber} />)}
+            {onSideBarControl && (<SideBarControl />)}
+
             <Video></Video>
-            <Toolbar setonSideBar={setonSideBar}>
+            <Toolbar setOnSideBarControl={setOnSideBarControl} setonSideBar={setonSideBarCall}>
             </Toolbar>
         </div>
     </>

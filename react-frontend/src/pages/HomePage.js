@@ -19,6 +19,7 @@ export default function HomePage() {
 
     useEffect(() => {
       console.log(state.isLogoped)
+      console.log(state)
      
       setTimeout(() => setLoading(false), 2000)
     }, [])

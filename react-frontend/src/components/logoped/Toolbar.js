@@ -3,9 +3,9 @@
 import { Button, Typography } from '@material-ui/core';
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Settings, Call, Chat } from '@material-ui/icons';
+import { Settings, Call, Chat,VideoCall } from '@material-ui/icons';
 import { SocketContext } from '../../utils/SocketContext'
-export default function Toolbar({children, setonSideBar}) {
+export default function Toolbar({children, setonSideBar, setOnSideBarControl}) {
     
 
     const { state } = useLocation();
@@ -19,9 +19,8 @@ export default function Toolbar({children, setonSideBar}) {
  
     <div className="toolbar">
 
-        <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" /> } > Kontrollpanel </Button>
-        <Button variant="contained" size="large" color="primary" startIcon={<Call fontSize="large" /> }   onClick={() => { setonSideBar( v => !v) }} > Video </Button>
-        <Button variant="contained" size="large" color="primary" startIcon={<Chat fontSize="large" /> } > chat </Button>
+        <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" />}  onClick={() => { setOnSideBarControl( v => !v) }}  > Kontrollpanel </Button>
+        <Button variant="contained" size="large" color="primary" startIcon={<VideoCall fontSize="large" /> }   onClick={() => { setonSideBar( v => !v) }} > Videosamtale </Button>
         {children}
     </div>   
     </>

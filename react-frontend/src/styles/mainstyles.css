@@ -4,11 +4,19 @@ body{
     background-color: beige;
     max-width: 1200px;
     margin: 0 auto;
-    border: 1px solid black;
     min-height: 100vh;
+    
 }
 *{
     color:white;
+}
+
+main{
+    background-color: #bd243e;
+    min-height: 100vh;
+    border: 1px solid black;
+    margin: 0 auto;
+
 }
 .Login {
     padding-top: 25%;
@@ -35,19 +43,45 @@ body{
                          "toolbar toolbar toolbar   " ;
 }
 
-.container-sidebar{
+.container-sidebarRight{
    display: grid;
    grid-template-columns: 70% 30%;
    grid-template-rows: 80% 20%;
    justify-content: center;
    align-items: center;
    
-   grid-template-areas: "video sidebar"
+   grid-template-areas: "video sidebarright"
                         "toolbar toolbar";
                         
    margin-top:20px;                 
 
 }
+.container-sidebarLeft{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 80% 20%;
+    justify-content: center;
+    align-items: center;
+    
+    grid-template-areas: "sidebarleft video"
+                         "toolbar toolbar";
+                         
+    margin-top:20px;                 
+ 
+ }
+
+ .container-sidebarBoth{
+    display: grid;
+    grid-template-columns: 20% 54% 26%;
+    grid-template-rows: 80% 20%;
+    justify-content: center;
+    align-items: center;
+    
+    grid-template-areas: "sidebarleft video sidebarright"
+                         "toolbar toolbar toolbar";
+                         
+    margin-top:20px; 
+ }
 
 .video{
     grid-area: video;
@@ -93,11 +127,23 @@ body{
 }
 
 
-.sidebar{
+.sidebar-right{
     margin-bottom: 10%;
     color: white;
-    grid-area: sidebar;
+    grid-area: sidebarright;
     min-height: 100%;
+    border-left: 1px solid white;
+    
+    background-color:  #8BBD24 ;
+
+}
+.sidebar-left{
+    margin-bottom: 10%;
+    color: white;
+    grid-area: sidebarleft;
+    min-height: 100%;
+    border-right: 1px solid white;
+    
     background-color:  #8BBD24 ;
 
 }
@@ -214,8 +260,8 @@ body{
       flex-direction: column;
       bottom: 2%;
       position: absolute;
-      left: 75%;
+      left: 70%;
     }
     .adminLogo *{
-        color: #8BBD24;
+        color: white;
     }

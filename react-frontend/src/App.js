@@ -9,6 +9,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#8BBD24'
+    },
+    secondary: {
+      main: '#fff'
     }
   }
 });
@@ -20,8 +23,10 @@ const App = () => {
       <MuiThemeProvider theme={theme} >
 
         <BrowserRouter>
-          
+          <main>
           <PageRoutes />
+
+          </main>
 
         </BrowserRouter>
       </MuiThemeProvider>
