@@ -164,7 +164,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                     :
                     <div className="Login"> 
                     <Typography variant="h4" align="center" color="secondary"  >
-                    Velkommen tilbake,  </Typography>
+                    Velkommen tilbake  </Typography>
                     {/* 
                     <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                     }} />
@@ -177,7 +177,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                     }} />  
                
 
-                     <Button variant="contained" size="large" color="primary" type="submit"> Få engangskode </Button>
+                     <Button variant="contained" size="large" color="primary" type="submit" className='buttonLogin'> Få engangskode </Button>
 
                     <div className="adminLogo">
                       <FormControlLabel

@@ -71,8 +71,9 @@ export default function SideBarCall({logopedPN}) {
             }} variant="contained" size="large"  style={{
                     borderRadius: 10,
                     backgroundColor: "#90ee90",
-                    fontSize: "18px"
-             }} startIcon={<Call fontSize="large" />  }   >  </Button>
+                    textAlign : 'center',
+                    fontSize: "20px"
+             }} startIcon={<Call fontSize="large" />}   >  </Button>
 
 
 
@@ -106,15 +107,16 @@ export default function SideBarCall({logopedPN}) {
                      {  !callAccepted && !callEnded &&
                         <div> 
 
-                                <List  className="pasientList" style={{borderTop:'2px solid white'}}>
-                                    <Typography variant="h6" align="center"  style={{borderBottom:'2px solid white'}}  >  Pålogget pasienter </Typography>
+                                <List  className="pasientList">
+                                    <Typography variant="h6" align="center"  style={{fontSize: 25}} >  Dine pasienter </Typography>
+                                    <Typography variant="h6" align="center"  style={{borderBottom:'2px solid white'}}  >  Pålogget </Typography>
 
                                     {listOnlinePatients}
 
                                     </List>
 
                                     <List  className="pasientList" style={{borderTop:'2px solid white', marginTop: 80}}>
-                                        <Typography variant="h6" align="center" style={{borderBottom:'2px solid white'}}   > Alle pasienter </Typography>
+                                        <Typography variant="h6" align="center" style={{borderBottom:'2px solid white'}}   > Avlogget </Typography>
 
                                         {listAllPatients}
 

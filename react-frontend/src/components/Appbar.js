@@ -7,7 +7,7 @@ export default function Appbar() {
   return (
     <>
     <AppBar position="static" color="primary">
-            <Typography variant="h4" align="center"  > Telelogopedi Nettportal Prototype </Typography>
+            <Typography variant="h4" align="center" className='appbar'  > Telelogopedi Nettportal Prototype </Typography>
         </AppBar>
     </>
   );

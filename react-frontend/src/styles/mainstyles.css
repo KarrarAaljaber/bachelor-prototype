@@ -1,7 +1,7 @@
 
 
 body{
-    background-color: beige;
+    background-color: rgba(222, 222, 222, 0.947);
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
@@ -9,14 +9,21 @@ body{
 }
 *{
     color:black;
+    margin-top: 5px;
 }
 
 main{
-    background: linear-gradient(rgba(255,230,181,0.5), rgba(255,230,33,0.3));
+    background: #FFE6B4;
     min-height: 100vh;
-    border: 1px solid black;
     margin: 0 auto;
 
+}
+
+.appbar {
+    padding: 20px;
+    background-color: #004C93;
+    color: white;
+    border: 2px solid white;
 }
 .Login {
     padding-top: 25%;
@@ -25,8 +32,10 @@ main{
     grid-gap: 25px;
     margin: 0 auto;
     max-width: 50%;
+}
 
-
+.loginButton {
+    background-color: #000;
 }
 
 .Login > *{
@@ -86,12 +95,15 @@ main{
 .video{
     grid-area: video;
     margin: 0 auto;
-    padding-top: 10px;
-
-
-
-    
+    padding-top: 10px;   
 }
+
+.nameTag {
+    color: white;
+    padding: 8px;
+    background-color: #8BBD24;
+}
+
 .video-accepted{
     grid-area: video;
     padding-top: 10px;
@@ -132,19 +144,21 @@ main{
     color: white;
     grid-area: sidebarright;
     min-height: 100%;
-    border-left: 1px solid white;
+    border: 4px solid  #8BBD24;
     
-    background-color:  #8BBD24 ;
+    background-color:  rgba(222, 222, 222, 0.947) ;
 
 }
 .sidebar-left{
     margin-bottom: 10%;
+    margin-top: 10%;
     color: white;
     grid-area: sidebarleft;
     min-height: 100%;
-    border-right: 1px solid white;
+    border: 4px solid  #8BBD24;
+    padding: 5px;
     
-    background-color:  #8BBD24 ;
+    background-color:  rgba(222, 222, 222, 0.947);
 
 }
 .sidebar Button{

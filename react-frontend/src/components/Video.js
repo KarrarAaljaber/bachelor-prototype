@@ -63,7 +63,7 @@ export default function Video() {
                         <div>
                
                               <video playsInline muted ref={myVideo} autoPlay />
-                              <Typography style={{backgroundColor: '#8BBD24', color: 'white'}} variant="h4" align="center">
+                              <Typography  className="nameTag" variant="h4" align="center">
                               
                                     {state.username}
                               </Typography>

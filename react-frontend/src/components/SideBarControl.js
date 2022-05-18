@@ -6,17 +6,17 @@ import { VolumeDown, VolumeUp } from "@material-ui/icons";
 export default function SideBarControl (){
 
     return(
-        <div className="sidebar-left" style={{display: 'flex', flexDirection: 'column', gap:30}}>
-            <Typography variant="h6" align="center"  style={{borderBottom:'2px solid white'}}  >  Kontrollpanel </Typography>
-            <div>
+        <div className="sidebar-left" style={{display: 'flex', flexDirection: 'column', gap:30, justifyContent: 'space-between'}}>
+            <Typography variant="h6" align="center"  style={{fontSize: 25}} >  Kontrollpanel </Typography>
+            
                 <Typography variant="h6" align="center"> Tekststørrelse </Typography>
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 20, paddingBottom:30}}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 20}}>
                     <Button variant="contained" size="small" color="primary"> Liten </Button>
                     <Button variant="contained" size="medium" color="primary"> Medium </Button>
                     <Button variant="contained" size="large" color="primary"> Stor </Button>
 
                 </div>
-                <div style={{paddingBottom:30}} > 
+                <div  > 
                 <Typography variant="h6" align="center"> Chatplassering </Typography>
 
                 <FormControl  style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
@@ -42,7 +42,7 @@ export default function SideBarControl (){
                     <VolumeUp />
 
                 </div>
-            </div>
+            
         </div>
     )
 }

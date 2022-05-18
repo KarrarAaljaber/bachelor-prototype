@@ -19,8 +19,8 @@ export default function Toolbar({children, setonSideBar, setOnSideBarControl}) {
  
     <div className="toolbar">
 
-        <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" />}  onClick={() => { setOnSideBarControl( v => !v) }}  > Kontrollpanel </Button>
-        <Button variant="contained" size="large" color="primary" startIcon={<VideoCall fontSize="large" /> }   onClick={() => { setonSideBar( v => !v) }} > Videosamtale </Button>
+        <Button variant="contained" size="large" color="primary"  startIcon={<Settings  />}  onClick={() => { setOnSideBarControl( v => !v) }}  > Kontrollpanel </Button>
+        <Button variant="contained" size="large" color="primary" startIcon={<VideoCall fontSize="small" /> }   onClick={() => { setonSideBar( v => !v) }} > Videosamtale </Button>
         {children}
     </div>   
     </>
