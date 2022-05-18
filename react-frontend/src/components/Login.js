@@ -141,7 +141,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                       <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                       }} />
                       */}
-                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'white'}}} InputLabelProps={{style: {fontSize: 30, color:'white'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
+                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} InputLabelProps={{style: {fontSize: 30, color:'black'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                         setPhoneNumber(event.target.value)
 
 
@@ -169,7 +169,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                     <TextField id="standard-basic"  label="personnummer"    focused onChange={(event)=>{
                     }} />
                     */}
-                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'white'}}} InputLabelProps={{style: {fontSize: 30, color:'white'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
+                    <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} InputLabelProps={{style: {fontSize: 30, color:'black'}}}  id="standard-basic"  label="Mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                         setPhoneNumber(event.target.value)
 
                         

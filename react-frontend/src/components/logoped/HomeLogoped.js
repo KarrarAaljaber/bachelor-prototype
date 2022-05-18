@@ -5,7 +5,7 @@ import Video from '../Video';
 import {useState, useEffect} from 'react'
 import SideBarCall from './SideBarCall';
 import {useLocation} from 'react-router-dom'
-import SideBarControl from './SideBarControl';
+import SideBarControl from '../SideBarControl';
 
 
 export default function HomeLogoped() {

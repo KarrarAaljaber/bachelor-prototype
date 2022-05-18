@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import Notifications from './Notifications';
 import { Settings, Call, Chat,VideoCall } from '@material-ui/icons';
 import { SocketContext } from '../../utils/SocketContext'
-export default function Toolbar({children, setonSideBar}) {
+export default function Toolbar({children, setonSideBar, setOnSideBarControl}) {
     
 
     const { state } = useLocation();
@@ -20,7 +20,7 @@ export default function Toolbar({children, setonSideBar}) {
  
     <div className="toolbar">
 
-        <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" /> } > Kontrollpanel </Button>
+      <Button variant="contained" size="large" color="primary"  startIcon={<Settings fontSize="large" />}  onClick={() => { setOnSideBarControl( v => !v) }}  > Kontrollpanel </Button>
         { /*
           <Button variant="contained" size="large" color="primary" startIcon={<Chat fontSize="large" /> } > Meldinger </Button>
           */

@@ -6,6 +6,8 @@ import { collection, doc,setDoc, getDocs, deleteDoc } from "firebase/firestore";
 import { db } from '../../utils/firebaseClient';
 import { patientContverter } from '../../utils/firebaseClasses/Patient';
 import { Button, Paper, TextField } from '@material-ui/core';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function AdminHome() {
 
@@ -62,14 +64,14 @@ export default function AdminHome() {
                         <h5>{patient?.fullname}</h5> 
                         <p> personnummer: {patient?.personnumber}</p>
                         <p> mobilnummer: {patient?.phonenumber} </p>
-                        <Button variant="contained"  size="small" color="secondary" onClick={async() =>{
+                        <Button variant="contained"  size="small" style={{backgroundColor: 'red'}}onClick={async() =>{
                             await deleteDoc(doc(db, 'patients', patient?.phonenumber));
                         }}> slett pasient</Button>
                     </div>)}
             </Paper>
 
-            {
-                /*<Popup trigger={            <Button variant="contained"    size="large" color="primary"> Legg til pasient</Button>} position="center">
+            
+                <Popup trigger={            <Button variant="contained"    size="large" color="primary"> Legg til pasient</Button>} position="center">
                 <div>
                 <TextField id="mobil"  label="mobilnummer" type="number" helperText="(+47)"    focused onChange={(event)=>{
                     setNewPhone(event.target.value)
@@ -94,7 +96,7 @@ export default function AdminHome() {
                 </div>
 
             
-            </Popup> */}
+            </Popup> 
         </div>
         <div className="logopedies">
             <h3>logopeder </h3>

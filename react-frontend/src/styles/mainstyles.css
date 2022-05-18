@@ -8,11 +8,11 @@ body{
     
 }
 *{
-    color:white;
+    color:black;
 }
 
 main{
-    background-color: #bd243e;
+    background: linear-gradient(rgba(255,230,181,0.5), rgba(255,230,33,0.3));
     min-height: 100vh;
     border: 1px solid black;
     margin: 0 auto;
@@ -262,6 +262,4 @@ main{
       position: absolute;
       left: 70%;
     }
-    .adminLogo *{
-        color: white;
-    }
+    
