@@ -8,6 +8,7 @@ import { collection, doc, getDoc } from "firebase/firestore";
 import { patientContverter } from '../utils/firebaseClasses/Patient';
 import { NavLink } from 'react-router-dom';
 import { logopedContverter } from '../utils/firebaseClasses/Logoped';
+import { LoginAsLogoped, LoginAsPatient } from '../utils/FirebaseLogins';
 
 const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
 
@@ -31,79 +32,10 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
         event.preventDefault();
         if(phoneNumber.length >=8){
             if(!isLogoped){
-              const ref = doc(db, "patients", phoneNumber).withConverter(patientContverter);
-              const docSnap = await getDoc(ref);
-              if (docSnap.exists()) {
-                  const patient = docSnap.data();
-                  console.log(patient.toString());
-                  captcha()
-                  const captchaVer = window.recaptchaVerifier;
-  
-                  /*
-                  signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
-                  .then((confirmationResult) => {
-                  // SMS sent. Prompt user to type the code from the message, then sign the
-                  // user in with confirmationResult.confirm(code).
-                      setUsername(patient.fullname)
-  
-                      window.confirmationResult = confirmationResult;
-                      setGotCode(true)
-  
-                  }).catch((error) => {
-                  // Error; SMS not sent
-                  // ...
-                  console.log(error)
-                  });
-                  */
-                  
-                  
-                  setPN(phoneNumber);
-                  setUsername(patient.fullname)
-                  setLoggedOn(true)
-  
-                } else {
-                  alert("Det finnes ikke en pasient med dette nummert!")
-                }
+              await LoginAsPatient(phoneNumber, setUsername,setGotCode)
             }else{
-              const ref = doc(db, "logopeds", phoneNumber).withConverter(logopedContverter);
-              const docSnap = await getDoc(ref);
-              if (docSnap.exists()) {
-                  const logoped = docSnap.data();
-                  console.log(logoped.toString());
-                  captcha()
-                  const captchaVer = window.recaptchaVerifier;
-  
-                  /*
-                  signInWithPhoneNumber(authorize, "+47" +phoneNumber, captchaVer)
-                  .then((confirmationResult) => {
-                  // SMS sent. Prompt user to type the code from the message, then sign the
-                  // user in with confirmationResult.confirm(code).
-                      setUsername(logoped.fullname)
-                      
-                      window.confirmationResult = confirmationResult;
-                      setGotCode(true)
-  
-                  }).catch((error) => {
-                  // Error; SMS not sent
-                  // ...
-                  console.log(error)
-                  });
-                  */
-                  setPN(phoneNumber);
-
-                  setUsername(logoped.fullname)
-                  setLoggedOn(true);
-  
-  
-                } else {
-                  alert("Det finnes ikke en logoped med dette nummert!")
-                }
-
+              await LoginAsLogoped(phoneNumber, setUsername, setGotCode);
             }
-           
-
-          
-
         }else{
             alert("Et mobilnummer må ha 8 siffer")
 

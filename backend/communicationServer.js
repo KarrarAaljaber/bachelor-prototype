@@ -1,6 +1,11 @@
 const app = require("express")();
 const server = require("http").createServer(app);
 
+
+//mye av denne filen er inspirert/lånt fra 
+//denne videoen https://www.youtube.com/watch?v=oxFr7we3LC8&ab_channel=JavaScriptMastery
+
+
 const cors = require("cors");
 
 const io = require("socket.io")(server, {

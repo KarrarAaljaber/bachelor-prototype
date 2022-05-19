@@ -2,10 +2,15 @@ import React, { createContext, useState, useRef, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
+
+//mye av denne filen er inspirert/lånt fra 
+//denne videoen https://www.youtube.com/watch?v=oxFr7we3LC8&ab_channel=JavaScriptMastery
+
+
 const SocketContext = createContext();
 
+
 const socket = io('http://localhost:5000');
-//const socket = io('https://bachelor-prototype2022.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -116,4 +121,4 @@ const ContextProvider = ({ children }) => {
   );
 };
 
-export { ContextProvider, SocketContext };
+export { ContextProvider,   SocketContext };
