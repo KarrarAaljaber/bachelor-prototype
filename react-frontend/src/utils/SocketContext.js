@@ -4,8 +4,8 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-//const socket = io('http://localhost:5000');
-const socket = io('https://bachelor-prototype2022.herokuapp.com/');
+const socket = io('http://localhost:5000');
+//const socket = io('https://bachelor-prototype2022.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -20,6 +20,8 @@ const ContextProvider = ({ children }) => {
 
   const userVideo = useRef();
   const connectionRef = useRef();
+
+  
 
   useEffect(async() => {
     
