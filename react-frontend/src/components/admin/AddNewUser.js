@@ -28,13 +28,13 @@ export default function AddNewUser({ setWantToAdd, wantToAdd}){
 
         if(!(newName.length === 0 || newPhone.length === 0  || newPr.length === 0 )){
             if(wantToAdd.patient){
-                await addPatient(newName, newPr, newPhone)
+                await addPatient(newName.toString(), newPr.toString(), newPhone.toString())
                 setWantToAdd({add:false, logoped:false, patient:false})
             
 
 
            }else if(wantToAdd.logoped){
-            await addLogoped(newName, newPr, newPhone)
+            await addLogoped(newName.toString(), newPr.toString(), newPhone.toString())
             setWantToAdd({add:false, logoped:false, patient:false})
 
            } 

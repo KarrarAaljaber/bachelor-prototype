@@ -300,4 +300,14 @@ main{
     .pasCon{
         display: flex;
         flex-direction: column;
+        gap: 10px;
+    }
+
+    .connect{
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        justify-content:center;
+       margin: 0 auto;
+       gap: 20px;
     }

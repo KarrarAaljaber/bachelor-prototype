@@ -1,4 +1,4 @@
-import { collection, doc,setDoc, getDocs, getDoc, deleteDoc } from "firebase/firestore";
+import { collection, doc,setDoc, getDocs,updateDoc,arrayUnion, arrayRemove, getDoc, deleteDoc } from "firebase/firestore";
 import { logopedContverter } from "./firebaseClasses/Logoped";
 import { patientContverter } from "./firebaseClasses/Patient";
 import { db } from './firebaseClient';
@@ -43,6 +43,15 @@ export const getLogoped = async(phonenumber) =>{
 
     }
 }
+export const getPatient = async(phonenumber) =>{
+    const ref = doc(db, "patients", phonenumber).withConverter(patientContverter);
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+        const patient = docSnap.data();
+        return patient;
+
+    }
+}
 
 export const getPatientsToLogoped = async(phonenumber) =>{
     const logoped = await getLogoped(phonenumber);
@@ -60,7 +69,8 @@ export const addLogoped = async (fullname,personnumber,phonenumber) =>{
     const data ={
         fullname: fullname,
         personnumber: personnumber,
-        phonenumber: phonenumber
+        phonenumber: phonenumber,
+        patients: []
 
     }
     await setDoc(doc(db, "logopeds", phonenumber),data )
@@ -76,6 +86,28 @@ export const addPatient = async (fullname,personnumber,phonenumber) =>{
     }
     await setDoc(doc(db, "patients", phonenumber),data )
 
+}
+
+export const connectPWithL = async (logopedphonenumber, patientphonenumber) =>{
+    const logoRef = doc(db, "logopeds", logopedphonenumber);
+    const patientRef = doc(db, "patients", patientphonenumber);
+
+    const docSnap = await getDoc(logoRef);
+ 
+    await updateDoc(logoRef, {
+        patients: arrayUnion(patientRef)
+    })
+   
+    }
+
+
+export const disconnectPWithL = async (logopedphonenumber, patientphonenumber) =>{
+    const logoRef = doc(db, "logopeds", logopedphonenumber);
+    const patientRef = doc(db, "patients", patientphonenumber);
+
+    await updateDoc(logoRef, {
+        patients: arrayRemove(patientRef)
+    }); 
 }
 export const removePatient = async (phonenumber) =>{await deleteDoc(doc(db, 'patients', phonenumber));}
 export const removeLogoped = async (phonenumber) =>{await deleteDoc(doc(db, 'logopeds', phonenumber));}

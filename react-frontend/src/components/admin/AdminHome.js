@@ -43,7 +43,7 @@ export default function AdminHome() {
                         <p> personnummer: {patient?.personnumber}</p>
                         <p> mobilnummer: {patient?.phonenumber} </p>
                         <Button variant="contained"  size="small" style={{backgroundColor: 'red'}}onClick={async() =>{
-                            await removePatient(patient?.phonenumber);
+                            await removePatient(patient?.phonenumber.toString());
                         }}> Fjern pasient</Button>
                     </div>)}
             </Paper>
@@ -63,7 +63,7 @@ export default function AdminHome() {
                         <p> personnummer: {logoped?.personnumber}</p>
                         <p> mobilnummer: {logoped?.phonenumber} </p>
                         <Button variant="contained"  size="small" style={{backgroundColor: 'red'}}onClick={async() =>{
-                            await removeLogoped(logoped?.phonenumber);
+                            await removeLogoped(logoped.phonenumber.toString());
                         }}> Fjern logoped</Button>
                     </div>)}
             </Paper>
