@@ -56,11 +56,10 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                   });
                   */
                   
-
+                  
                   setPN(phoneNumber);
                   setUsername(patient.fullname)
                   setLoggedOn(true)
-  
   
                 } else {
                   alert("Det finnes ikke en pasient med dette nummert!")
@@ -93,8 +92,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                   setPN(phoneNumber);
 
                   setUsername(logoped.fullname)
-                  setLoggedOn(true)
-         
+                  setLoggedOn(true);
   
   
                 } else {
@@ -149,7 +147,7 @@ const Login = ({setLoggedOn, setUsername, setIsLogoped,isLogoped,setPN}) =>{
                     }} /> 
 
 
-                      <TextField id="sms"  label="engangskoden(sms)" type="number" helperText="(sjekk sms)"    focused onChange={(event)=>{
+                      <TextField id="sms" inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} InputLabelProps={{style: {fontSize: 30, color:'black'}}}   label="engangskoden(sms)" type="number" helperText="(sjekk sms)"    focused onChange={(event)=>{
                       setCode(event.target.value)
 
                       }} /> 

@@ -27,10 +27,10 @@ export default function AdminLogin() {
     <>
         <div className="Login"> 
             <Typography variant="h4" align="center"  >Velkommen admin  </Typography>
-            <TextField id="username" style={{fontSize: 20}} label="Brukernavn"   focused onChange={(event)=>{
+            <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} InputLabelProps={{style: {fontSize: 30, color:'black'}}} id="username" style={{fontSize: 20}} label="Brukernavn"   focused onChange={(event)=>{
                         setUsername(event.target.value)
                     }} /> 
-            <TextField id="password" inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} label="Passord" type="password"   focused onChange={(event)=>{
+            <TextField inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} InputLabelProps={{style: {fontSize: 30, color:'black'}}} id="password" inputProps={{style: {fontSize: 20, marginTop: 20, color: 'black'}}} label="Passord" type="password"   focused onChange={(event)=>{
                 setPassword(event.target.value)
             }} /> 
 

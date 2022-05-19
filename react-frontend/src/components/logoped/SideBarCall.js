@@ -12,7 +12,7 @@ import { patientContverter } from '../../utils/firebaseClasses/Patient';
 import { Button, TextField,List,ListItemText, ListItem,ListItemIcon, Typography } from '@material-ui/core';
 import {  Call, FileCopy,Inbox } from '@material-ui/icons';
 import { Person } from '@material-ui/icons';
-export default function SideBarCall({logopedPN}) {
+export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
     const { me, callAccepted, name, setName, callEnded, leaveCall, callUser, connectedUsers  } = useContext(SocketContext);
     const [idToCall, setidToCall] = useState('')
 
@@ -67,6 +67,8 @@ export default function SideBarCall({logopedPN}) {
                 console.log(userToCall)
 
                 callUser(userToCall.id)
+                setWhoICall(userToCall.name)
+                setTimeout(() =>                 setonSideBarCall(false), 1000)
 
             }} variant="contained" size="large"  style={{
                     borderRadius: 10,
@@ -83,7 +85,8 @@ export default function SideBarCall({logopedPN}) {
 
     });
 
-    const listAllPatients = patients.map((patient) =>{
+    const listAllPatients = patients.filter(function(x,index) { return x !== onlinePatients[index]; })
+    .map((patient) =>{
         return(
             <ListItem style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}} className="patientItem"  variant="contained" size="large" color="primary"  startIcon={<Call fontSize="large" /> } >  
             <ListItemIcon>

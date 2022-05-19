@@ -7,10 +7,13 @@ import Notifications from './Notifications';
 import {useLocation} from 'react-router-dom'
 
 import SideBarControl from '../SideBarControl'
+import Chat from '../Chat';
 export default function HomePatient() {
 
 
   const [onSideBarCall, setonSideBarCall] = useState(false)
+  const [chatOn, setChatOn] = useState(false)
+
   const[onSideBarControl, setOnSideBarControl] = useState(false)
   const [currentStyle, setCurrentStyle] = useState('container')
   
@@ -19,20 +22,20 @@ export default function HomePatient() {
 
   useEffect(() => {
 
-    if(!onSideBarControl && !onSideBarCall){
+    if(!onSideBarControl && !onSideBarCall && !chatOn){
       setCurrentStyle("container")
 
-    }else if(onSideBarControl && !onSideBarCall){
+    }else if(onSideBarControl && (!onSideBarCall && !chatOn )){
       setCurrentStyle("container-sidebarLeft")
 
-    }else if(!onSideBarControl && onSideBarCall){
+    }else if(!onSideBarControl && (onSideBarCall || chatOn)){
         setCurrentStyle("container-sidebarRight")
 
     }else{
       setCurrentStyle("container-sidebarBoth")
     }
 
-  }, [onSideBarControl, onSideBarCall])
+  }, [onSideBarControl, onSideBarCall, chatOn])
 
 
   return (
@@ -40,7 +43,8 @@ export default function HomePatient() {
         
         <div className={currentStyle}>
             {onSideBarControl && (<SideBarControl />)}
-            <Video></Video>
+            {chatOn && (<Chat />)}
+            <Video setChatOn ={setChatOn}></Video>
             <Toolbar setOnSideBarControl={setOnSideBarControl} setonSideBar={setonSideBarCall} />
 
             <Notifications />

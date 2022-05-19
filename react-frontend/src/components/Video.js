@@ -7,7 +7,7 @@ import { Settings, Call, Chat, Work,Cast } from '@material-ui/icons';
 
 import {useLocation} from 'react-router-dom'
 
-export default function Video() {
+export default function Video({setChatOn,WhoICall}) {
       const { name, callAccepted, myVideo, userVideo, callEnded, stream, call, leaveCall } = useContext(SocketContext);
       const [videoStyle, setVideoStyle] = useState('video')
       const { state } = useLocation();
@@ -34,19 +34,25 @@ export default function Video() {
                 callAccepted && !callEnded ? 
                 (
                 <div>
+                  {state.isLogoped ?           <Typography  className="nameTag" variant="h4" align="center">{WhoICall}</Typography>
+                        :
+                        <Typography  className="nameTag" variant="h4" align="center">{call.name}</Typography>
+                        
+                         }
+        
                   <video playsInline  ref={userVideo} autoPlay />
                   <div className="callAccepted-menu"> 
-                        <Button  startIcon={<Call fontSize="small" style={{color: 'red'}} /> } style={{ width: 150, marginBottom:5,  backgroundColor: 'red'}} variant="contained" size="small" color="primary"  onClick={() => {
+                        <Button  startIcon={<Call fontSize="small" style={{color: '#F08080'}} /> } style={{ width: 150, fontWeight: 'bold' ,marginBottom:5,  backgroundColor: '#F08080'}} variant="contained" size="small" color="primary"  onClick={() => {
                               leaveCall()
                               } }>  
                               Avslutt 
 
                               </Button>
-                        <Button label="workplace" color="primary"  startIcon={<Work style={{size:'larger'}} fontSize="large" /> } style={{ width: 150, marginBottom:5, border: '1px solid black'}} variant="contained" size="small" color="primary"  onClick={() => {
-                              
-                        } }>  Workplace
+                        <Button label="chat" color="primary"  startIcon={<Chat style={{size:'larger'}} fontSize="large" /> } style={{ width: 150,fontWeight: 'bold' , marginBottom:5}} variant="contained" size="small" color="primary"  onClick={() => {
+                              setChatOn( v => !v) 
+                        } }>  Meldinger
                         </Button>   
-                        <Button  startIcon={<Cast fontSize="small" /> } style={{ width: 150 ,  marginBottom:5,border: '1px solid black'}} variant="contained" size="small" color="primary"  onClick={() => {
+                        <Button  startIcon={<Cast fontSize="small" /> } style={{ width: 150 , fontWeight: 'bold' ,  marginBottom:5}} variant="contained" size="small" color="primary"  onClick={() => {
                         leaveCall()
                         } }>  dele skjerm
                         </Button>   
