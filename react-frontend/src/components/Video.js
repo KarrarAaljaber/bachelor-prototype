@@ -8,21 +8,21 @@ import { Settings, Call, Chat, Work,Cast } from '@material-ui/icons';
 import {useLocation} from 'react-router-dom'
 
 export default function Video({setChatOn,WhoICall}) {
-      const { name, callAccepted, myVideo, userVideo, callEnded, stream, call, leaveCall } = useContext(SocketContext);
+      const { sessionStarted, myVideo, userVideo, sessionEnded, call, leaveSession } = useContext(SocketContext);
       const [videoStyle, setVideoStyle] = useState('video')
       const { state } = useLocation();
 
       
 
       useEffect(() => {
-            if(callAccepted) {
+            if(sessionStarted) {
                   setVideoStyle("video-accepted");
 
             }else{
                   setVideoStyle("video");
             }
 
-      }, [callAccepted])
+      }, [sessionStarted])
 
   
 
@@ -31,7 +31,7 @@ export default function Video({setChatOn,WhoICall}) {
         <div className={videoStyle}>
        
               {
-                callAccepted && !callEnded ? 
+                sessionStarted && !sessionEnded ? 
                 (
                 <div>
                   {state.isLogoped ?           <Typography  className="nameTag" variant="h4" align="center">{WhoICall}</Typography>
@@ -43,7 +43,7 @@ export default function Video({setChatOn,WhoICall}) {
                   <video playsInline  ref={userVideo} autoPlay />
                   <div className="callAccepted-menu"> 
                         <Button  startIcon={<Call fontSize="small" style={{color: '#F08080'}} /> } style={{ width: 150, fontWeight: 'bold' ,marginBottom:5,  backgroundColor: '#F08080'}} variant="contained" size="small" color="primary"  onClick={() => {
-                              leaveCall()
+                              leaveSession()
                               } }>  
                               Avslutt 
 
@@ -53,7 +53,7 @@ export default function Video({setChatOn,WhoICall}) {
                         } }>  Meldinger
                         </Button>   
                         <Button  startIcon={<Cast fontSize="small" /> } style={{ width: 150 , fontWeight: 'bold' ,  marginBottom:5}} variant="contained" size="small" color="primary"  onClick={() => {
-                        leaveCall()
+                              leaveSession()
                         } }>  dele skjerm
                         </Button>   
                   </div>

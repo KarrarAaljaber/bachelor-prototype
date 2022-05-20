@@ -16,12 +16,10 @@ import { Person } from '@material-ui/icons';
 
 import {getLogoped,getPatientsToLogoped} from '../../utils/FirebaseFunctions'
 export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
-    const { me, callAccepted: sessionStarted, name, setName, callEnded, leaveCall, callUser, connectedUsers  } = useContext(SocketContext);
-    const [idToCall, setidToCall] = useState('')
+    const {sessionStarted,sessionEnded, callPatient, connectedUsers  } = useContext(SocketContext);
 
     const[patients,setPatients] = useState([])
     const[onlinePatients, setOnlinePatients] = useState([]);
-    let patientsArr = [];
     let onlinePatientsArr = [];
     const[currentLogo, setCurrentLogo] = useState([])
 
@@ -32,7 +30,6 @@ export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
         console.log(currentLogo.toString());
         
         setPatients(await getPatientsToLogoped("90212383"));  
-            
             
 
       },[])
@@ -61,7 +58,7 @@ export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
                 const userToCall = connectedUsers.find( u => u.name === patient.fullname)
                 console.log(userToCall)
 
-                callUser(userToCall.id)
+                callPatient(userToCall.id)
                 setWhoICall(userToCall.name)
                 setTimeout(() =>                 setonSideBarCall(false), 1000)
 
@@ -80,7 +77,7 @@ export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
 
     });
 
-    const listAllPatients = patients.filter(function(x,index) { return x !== onlinePatients[index]; })
+    const listOfflinePatients = patients.filter(function(x,index) { return x !== onlinePatients[index]; })
     .map((patient) =>{
         return(
             <ListItem key={patient.fullname} style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}} className="patientItem"  variant="contained" size="large" color="primary"  startIcon={<Call fontSize="large" /> } >  
@@ -102,7 +99,7 @@ export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
     <>
             <div className="sidebar-right">
                
-                     {  !sessionStarted && !callEnded &&
+                     {  !sessionStarted && !sessionEnded &&
                         <div> 
 
                             <List  className="pasientList">
@@ -116,7 +113,7 @@ export default function SideBarCall({logopedPN,setonSideBarCall,setWhoICall}) {
                                 <List  className="pasientList" style={{borderTop:'2px solid white', marginTop: 80}}>
                                     <Typography variant="h6" align="center" style={{borderBottom:'2px solid white'}}   > Avlogget </Typography>
 
-                                    {listAllPatients}
+                                    {listOfflinePatients}
 
                                 </List>
                         </div>

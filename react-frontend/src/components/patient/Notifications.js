@@ -7,14 +7,14 @@ import {  Call } from '@material-ui/icons';
 
 
 const Notifications = () => {
-  const { answerCall, call, callAccepted } = useContext(SocketContext);
+  const { answerLogoped, call, sessionStarted } = useContext(SocketContext);
 
   return (
     <>
-      {call.isReceivingCall && !callAccepted && (
+      {call.isReceivingCall && !sessionStarted && (
         <div className="notification" >
           <h3>logopeden {call.name} ringer deg</h3>
-          <Button variant="contained" color="primary"  onClick={answerCall}  startIcon={<Call fontSize="large" /> }>
+          <Button variant="contained" color="primary"  onClick={answerLogoped}  startIcon={<Call fontSize="large" /> }>
             Svar
           </Button>
         </div>

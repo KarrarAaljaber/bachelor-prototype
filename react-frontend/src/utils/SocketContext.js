@@ -13,8 +13,8 @@ const SocketContext = createContext();
 const socket = io('http://localhost:5000');
 
 const ContextProvider = ({ children }) => {
-  const [callAccepted, setCallAccepted] = useState(false);
-  const [callEnded, setCallEnded] = useState(false);
+  const [sessionStarted, setSessionStarted] = useState(false);
+  const [sessionEnded, setSessionEnded] = useState(false);
   const [stream, setStream] = useState();
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
@@ -22,27 +22,27 @@ const ContextProvider = ({ children }) => {
   const[connectedUsers, setConnectedUsers] = useState([]);
 
   const myVideo =  useRef()
-
   const userVideo = useRef();
   const connectionRef = useRef();
 
+
+  function getStream(){
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    .then((currentStream) => {
+      setStream(currentStream);
+
+      myVideo.current.srcObject = currentStream;
+    });
+  }
   
 
   useEffect(async() => {
     
+    await getStream();
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-
-        myVideo.current.srcObject = currentStream;
-      });
-
-      socket.emit('newuser', name);
-
-      socket.on('me', (id) => setMe(id));
+    socket.emit('newuser', name);
+    socket.on('me', (id) => setMe(id));
     socket.on('connectedUsers' , (l) => setConnectedUsers(l));
-
     console.log(connectedUsers);
 
 
@@ -53,8 +53,8 @@ const ContextProvider = ({ children }) => {
     });
   }, [myVideo?.current]);
 
-  const answerCall = () => {
-    setCallAccepted(true);
+  const answerLogoped = () => {
+    setSessionStarted(true);
 
     const peer = new Peer({ initiator: false, trickle: false, stream });
 
@@ -71,7 +71,7 @@ const ContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
-  const callUser = (id) => {
+  const callPatient = (id) => {
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
     peer.on('signal', (data) => {
@@ -83,7 +83,7 @@ const ContextProvider = ({ children }) => {
     });
 
     socket.on('callAccepted', (signal) => {
-      setCallAccepted(true);
+      setSessionStarted(true);
 
       peer.signal(signal);
     });
@@ -91,8 +91,8 @@ const ContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
-  const leaveCall = () => {
-    setCallEnded(true);
+  const leaveSession = () => {
+    setSessionEnded(true);
 
     connectionRef.current.destroy();
 
@@ -102,17 +102,17 @@ const ContextProvider = ({ children }) => {
   return (
     <SocketContext.Provider value={{
       call,
-      callAccepted,
+      sessionStarted,
       myVideo,
       userVideo,
       stream,
       name,
       setName,
-      callEnded,
+      sessionEnded,
       me,
-      callUser,
-      leaveCall,
-      answerCall,
+      callPatient,
+      leaveSession,
+      answerLogoped,
       connectedUsers
     }}
     >
